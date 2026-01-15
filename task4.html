@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rose Bhowmick | Portfolio</title>
+
+<style>
+:root {
+    --primary: #61115a;
+    --secondary: #460c3e;
+    --dark: #0f172a;
+    --light: #f8fafc;
+    --gray: #64748b;
+    --card: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: "Segoe UI", system-ui, sans-serif;
+    background: var(--light);
+    color: var(--dark);
+    line-height: 1.6;
+}
+
+/* COMMON */
+section {
+    padding: 60px 10%;
+}
+
+h2 {
+    text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: 30px;
+}
+
+p {
+    color: var(--gray);
+}
+
+/* HEADER */
+header {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    padding: 60px 10% 50px;
+}
+
+nav {
+    display: flex;
+    justify-content: flex-end;
+    gap: 24px;
+}
+
+nav a {
+    color: #e5e7eb;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+/* HERO */
+.hero {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 3rem;
+}
+
+.hero p {
+    color: #f1f5f9;
+    margin-top: 10px;
+}
+
+/* ABOUT */
+.about {
+    max-width: 850px;
+    margin: auto;
+    text-align: center;
+}
+
+/* GRID */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+}
+
+.card {
+    background: var(--card);
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+}
+
+/* TODO */
+.todo-box {
+    max-width: 420px;
+    margin: auto;
+    text-align: center;
+}
+
+.todo-box input {
+    width: 70%;
+    padding: 12px;
+    border-radius: 30px;
+    border: 1px solid #cbd5e1;
+}
+
+.todo-box button {
+    padding: 12px 22px;
+    border-radius: 30px;
+    background: var(--primary);
+    color: white;
+    border: none;
+}
+
+.todo-box ul {
+    list-style: none;
+    margin-top: 18px;
+}
+
+.todo-box li {
+    background: #f1f5f9;
+    padding: 12px;
+    margin-bottom: 8px;
+    border-radius: 10px;
+}
+
+/* PRODUCTS */
+.controls {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.controls input,
+.controls select {
+    padding: 10px 14px;
+    border-radius: 12px;
+    border: 1px solid #cbd5e1;
+    margin: 5px;
+}
+
+/* CONTACT */
+.contact-form {
+    max-width: 480px;
+    margin: auto;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 14px;
+    border-radius: 12px;
+    border: 1px solid #cbd5e1;
+}
+
+.contact-form button {
+    width: 100%;
+    padding: 14px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 35px;
+}
+
+#successMsg {
+    display: none;
+    margin-top: 12px;
+    text-align: center;
+    color: green;
+    font-weight: 500;
+}
+
+/* FOOTER */
+footer {
+    background: var(--dark);
+    color: #cbd5f5;
+    text-align: center;
+    padding: 18px;
+    font-size: 0.9rem;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    section, header {
+        padding: 50px 8%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <nav>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#todo">To-Do</a>
+        <a href="#products">Products</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="hero">
+        <h1>Rose Bhowmick</h1>
+        <p>Building clean, responsive & user-focused web experiences</p>
+    </div>
+</header>
+
+<section id="about">
+    <h2>About Me</h2>
+    <p class="about">
+        I am a motivated and detail-oriented Frontend Developer with a passion for creating responsive and user-centric web applications.
+        <br><br>
+        I focus on clean code, accessibility, performance, and modern UI practices using HTML, CSS, and JavaScript.
+        <br><br>
+        My experience includes building portfolio websites, task management apps, and dynamic product listings.
+    </p>
+</section>
+
+<section id="projects">
+    <h2>Projects</h2>
+    <div class="grid">
+        <div class="card">
+            <h3>Portfolio Website</h3>
+            <p>Professional multi-section responsive website.</p>
+        </div>
+        <div class="card">
+            <h3>To-Do Application</h3>
+            <p>Task manager with Local Storage.</p>
+        </div>
+        <div class="card">
+            <h3>Product Listing</h3>
+            <p>Dynamic filtering, sorting, and search.</p>
+        </div>
+    </div>
+</section>
+
+<section id="todo">
+    <h2>To-Do List</h2>
+    <div class="todo-box">
+        <input type="text" id="taskInput" placeholder="Enter a task">
+        <button onclick="addTask()">Add</button>
+        <ul id="taskList"></ul>
+    </div>
+</section>
+
+<section id="products">
+    <h2>Product Listing</h2>
+    <div class="controls">
+        <input type="text" id="searchInput" placeholder="Search" oninput="applyFilters()">
+        <select id="categoryFilter" onchange="applyFilters()">
+            <option value="all">All</option>
+            <option value="tech">Tech</option>
+            <option value="books">Books</option>
+        </select>
+        <select id="priceFilter" onchange="applyFilters()">
+            <option value="all">All Prices</option>
+            <option value="low">Below ₹5,000</option>
+            <option value="mid">₹5,000–₹30,000</option>
+            <option value="high">Above ₹30,000</option>
+        </select>
+        <select onchange="sortProducts(this.value)">
+            <option value="">Sort</option>
+            <option value="priceLow">Price ↑</option>
+            <option value="priceHigh">Price ↓</option>
+            <option value="rating">Rating</option>
+        </select>
+    </div>
+    <div id="productList" class="grid"></div>
+</section>
+
+<section id="contact">
+    <h2>Contact Me</h2>
+    <form class="contact-form" id="contactForm">
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea rows="4" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+        <p id="successMsg">✅ Message sent successfully!</p>
+    </form>
+</section>
+
+<footer>
+    <p>© 2026 Rose Bhowmick</p>
+</footer>
+
+<script>
+/* TODO */
+let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+function displayTasks() {
+    taskList.innerHTML = "";
+    tasks.forEach(task => taskList.innerHTML += `<li>${task}</li>`);
+}
+
+function addTask() {
+    if (taskInput.value.trim()) {
+        tasks.push(taskInput.value.trim());
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+        taskInput.value = "";
+        displayTasks();
+    }
+}
+displayTasks();
+
+/* PRODUCTS */
+const products = [
+    { name: "Laptop", category: "tech", price: 60000, rating: 4.5 },
+    { name: "Headphones", category: "tech", price: 2500, rating: 4.2 },
+    { name: "Smartphone", category: "tech", price: 30000, rating: 4.6 },
+    { name: "JavaScript Book", category: "books", price: 500, rating: 4.8 },
+    { name: "CSS Book", category: "books", price: 700, rating: 4.4 }
+];
+
+let filteredProducts = [...products];
+
+function render(list) {
+    productList.innerHTML = "";
+    list.forEach(p => {
+        productList.innerHTML += `
+            <div class="card">
+                <h3>${p.name}</h3>
+                <p>Category: ${p.category}</p>
+                <p>Price: ₹${p.price}</p>
+                <p>⭐ ${p.rating}</p>
+            </div>`;
+    });
+}
+
+function applyFilters() {
+    const search = searchInput.value.toLowerCase();
+    const category = categoryFilter.value;
+    const price = priceFilter.value;
+
+    filteredProducts = products.filter(p => {
+        let matchPrice = true;
+        if (price === "low") matchPrice = p.price < 5000;
+        if (price === "mid") matchPrice = p.price >= 5000 && p.price <= 30000;
+        if (price === "high") matchPrice = p.price > 30000;
+        return p.name.toLowerCase().includes(search) &&
+               (category === "all" || p.category === category) &&
+               matchPrice;
+    });
+    render(filteredProducts);
+}
+
+function sortProducts(type) {
+    let sorted = [...filteredProducts];
+    if (type === "priceLow") sorted.sort((a,b)=>a.price-b.price);
+    if (type === "priceHigh") sorted.sort((a,b)=>b.price-a.price);
+    if (type === "rating") sorted.sort((a,b)=>b.rating-a.rating);
+    render(sorted);
+}
+
+render(products);
+
+/* CONTACT SUCCESS MESSAGE */
+const contactForm = document.getElementById("contactForm");
+const successMsg = document.getElementById("successMsg");
+
+contactForm.addEventListener("submit", function(e) {
+    e.preventDefault();
+    successMsg.style.display = "block";
+    contactForm.reset();
+    setTimeout(() => successMsg.style.display = "none", 4000);
+});
+</script>
+
+</body>
+</html>
